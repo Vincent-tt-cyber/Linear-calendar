@@ -1,7 +1,7 @@
 let linearCalendar = document.querySelector(".linear-calendar");
 
 // Текущая дата
-const currentDate = new Date();
+const currentDate = new Date().getDate();
 const currentMonth = new Date().getMonth();
 const currentYear = new Date().getFullYear();
 
@@ -23,6 +23,9 @@ function showCalendarDays(days) {
     li.textContent = day;
     li.classList.add("date-item");
     linearCalendar.appendChild(li);
+
+    // Отметка текущего дня
+    day == currentDate && li.classList.add("current-date");
   });
 }
 

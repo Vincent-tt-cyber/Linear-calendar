@@ -1,9 +1,24 @@
-let linearCalendar = document.querySelector(".linear-calendar");
-
+const linearCalendar = document.querySelector(".linear-calendar");
+const monthName = document.querySelector(".month-name");
 // Текущая дата
 const currentDate = new Date().getDate();
 const currentMonth = new Date().getMonth();
 const currentYear = new Date().getFullYear();
+
+const monthNames = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
 
 // Последний день месяца
 const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
@@ -32,3 +47,14 @@ function showCalendarDays(days) {
 if (days.length > 0) {
   showCalendarDays(days);
 }
+
+// отобразить название месяца
+function showCalendarMonth(months) {
+  months.map((month, i) => {
+    if (i == currentMonth) {
+      monthName.textContent = monthNames[currentMonth];
+    }
+  });
+}
+
+showCalendarMonth(monthNames);

@@ -1,9 +1,11 @@
 const linearCalendar = document.querySelector(".linear-calendar");
 const monthName = document.querySelector(".month-name");
+const monthYear = document.querySelector(".month-year");
+
 // Текущая дата
 const currentDate = new Date().getDate();
 const currentMonth = new Date().getMonth();
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear() ;
 
 const monthNames = [
   "Январь",
@@ -57,4 +59,10 @@ function showCalendarMonth(months) {
   });
 }
 
+// Отобразить год
+function showCalendarYear(year) {
+  monthYear.textContent = year;
+}
+
 showCalendarMonth(monthNames);
+showCalendarYear(currentYear);

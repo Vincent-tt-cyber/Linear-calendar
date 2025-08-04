@@ -13,6 +13,19 @@ body {
   align-items: center;
 }
 
+.container {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.month-name {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
 .linear-calendar {
   display: flex;
   align-items: center;
@@ -20,7 +33,6 @@ body {
   flex-wrap: wrap;
   gap: 5px;
   /* overflow-x: scroll; */
-  margin: 50px;
 }
 
 .date-item {

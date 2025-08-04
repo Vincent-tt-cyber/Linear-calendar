@@ -6,6 +6,7 @@ const monthYear = document.querySelector(".month-year");
 let currentDate = new Date().getDate();
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
+let currentDay = new Date().getDay() - 1;
 
 const monthNames = [
   "Январь",
@@ -22,11 +23,18 @@ const monthNames = [
   "Декабрь",
 ];
 
-// let weekDaysNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+let dayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
+console.log(dayNames[currentDay]);
 
 function updateCalendar() {
   // Очистка календаря
   linearCalendar.innerHTML = "";
+
+  // TODO: 
+  // Первый день месяца
+  const firstDay = new Date(currentYear, currentMonth, 1).getDate();
+  console.log(firstDay);
 
   // Последний день месяца
   const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();

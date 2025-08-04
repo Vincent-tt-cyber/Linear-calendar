@@ -19,11 +19,11 @@ body {
   margin: 0 auto;
 }
 
-.month-name {
+.month-name,
+.month-year {
   text-align: center;
   font-size: 25px;
   font-weight: 700;
-  margin: 20px 0;
 }
 
 .linear-calendar {
@@ -32,7 +32,14 @@ body {
   justify-content: start;
   flex-wrap: wrap;
   gap: 5px;
-  /* overflow-x: scroll; */
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
 }
 
 .date-item {

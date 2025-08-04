@@ -3,9 +3,9 @@ const monthName = document.querySelector(".month-name");
 const monthYear = document.querySelector(".month-year");
 
 // Текущая дата
-const currentDate = new Date().getDate();
-const currentMonth = new Date().getMonth();
-const currentYear = new Date().getFullYear();
+let currentDate = new Date().getDate();
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
 
 const monthNames = [
   "Январь",
@@ -22,49 +22,57 @@ const monthNames = [
   "Декабрь",
 ];
 
-// Последний день месяца
-const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+// let weekDaysNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
-// Массив дат в месяце
-let days = [];
+function updateCalendar() {
+  // Очистка календаря
+  linearCalendar.innerHTML = "";
 
-// Создание списка дней
-for (let i = 1; i <= lastDay; i++) {
-  days.push(i);
-}
+  // Последний день месяца
+  const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-// Отобразить даты месяца
-function showCalendarDays(days) {
-  days.map((day) => {
+  // Заполнение названий месяцев и годов
+  monthName.textContent = monthNames[currentMonth];
+  monthYear.textContent = currentYear;
+
+  // Заполнение календаря
+  for (let day = 1; day <= lastDay; day++) {
     let li = document.createElement("li");
     li.textContent = day;
     li.classList.add("date-item");
-    linearCalendar.appendChild(li);
 
-    // Отметка текущего дня
-    day == currentDate &&
-      currentYear == new Date().getFullYear() &&
+    // Добавление класса для текущей даты
+    if (
+      day == currentDate &&
+      currentMonth == new Date().getMonth() &&
+      currentYear == new Date().getFullYear()
+    ) {
       li.classList.add("current-date");
-  });
-}
-
-if (days.length > 0) {
-  showCalendarDays(days);
-}
-
-// отобразить название месяца
-function showCalendarMonth(months) {
-  months.map((month, i) => {
-    if (i == currentMonth) {
-      monthName.textContent = monthNames[currentMonth];
     }
-  });
+
+    linearCalendar.appendChild(li);
+  }
 }
 
-// Отобразить год
-function showCalendarYear(year) {
-  monthYear.textContent = year;
-}
+const prevMonth = document.querySelector(".prev-month");
+const nextMonth = document.querySelector(".next-month");
 
-showCalendarMonth(monthNames);
-showCalendarYear(currentYear);
+prevMonth.addEventListener("click", () => {
+  currentMonth--;
+  if (currentMonth < 0) {
+    currentMonth = 11;
+    currentYear--;
+  }
+  updateCalendar();
+});
+
+nextMonth.addEventListener("click", () => {
+  currentMonth++;
+  if (currentMonth > 11) {
+    currentMonth = 0;
+    currentYear++;
+  }
+  updateCalendar();
+});
+
+updateCalendar();

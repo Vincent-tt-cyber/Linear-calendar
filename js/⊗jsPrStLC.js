@@ -5,7 +5,7 @@ const monthYear = document.querySelector(".month-year");
 // Текущая дата
 const currentDate = new Date().getDate();
 const currentMonth = new Date().getMonth();
-const currentYear = new Date().getFullYear() ;
+const currentYear = new Date().getFullYear();
 
 const monthNames = [
   "Январь",
@@ -42,7 +42,9 @@ function showCalendarDays(days) {
     linearCalendar.appendChild(li);
 
     // Отметка текущего дня
-    day == currentDate && li.classList.add("current-date");
+    day == currentDate &&
+      currentYear == new Date().getFullYear() &&
+      li.classList.add("current-date");
   });
 }
 

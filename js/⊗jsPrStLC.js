@@ -31,11 +31,6 @@ function updateCalendar() {
   // Очистка календаря
   linearCalendar.innerHTML = "";
 
-  // TODO: 
-  // Первый день месяца
-  const firstDay = new Date(currentYear, currentMonth, 1).getDate();
-  console.log(firstDay);
-
   // Последний день месяца
   const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
 
@@ -48,6 +43,12 @@ function updateCalendar() {
     let li = document.createElement("li");
     li.textContent = day;
     li.classList.add("date-item");
+
+    // Добавление названия дня недели
+    let dayNameEl = document.createElement("b");
+    dayNameEl.textContent =
+      dayNames[new Date(currentYear, currentMonth, day - 1).getDay()];
+    li.appendChild(dayNameEl);
 
     // Добавление класса для текущей даты
     if (

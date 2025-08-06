@@ -16,13 +16,16 @@ body {
 .container {
   width: 100%;
   max-width: 600px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 .month-name {
-  font-size: 24px;
+  font-size: clamp(1rem, 0.8571rem + 0.7143vw, 1.5rem);
   text-align: center;
 }
 .month-year {
+  font-size: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.25rem);
   color: #777;
   text-align: center;
 }
@@ -34,7 +37,8 @@ body {
   flex-wrap: wrap;
   gap: 5px; */
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
   gap: 8px;
 }
 
@@ -52,7 +56,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  font-size: 20px;
+  font-size: clamp(0.875rem, 0.7679rem + 0.5357vw, 1.25rem);
   cursor: pointer;
   /* color: #ff6b6b; */
 }
@@ -73,6 +77,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 3px;
   padding: 10px;
+  font-size: clamp(0.875rem, 0.8036rem + 0.3571vw, 1.125rem);
 }
 
 .date-item.current-date {
